@@ -1,0 +1,10 @@
+<h1>Repos#lookup</h1>
+<p>Find me in app/views/repos/lookup.html.erb</p>
+
+<%= form_tag("/repos/lookup", :method => "get", :remote => true) do %>
+	<%= text_field_tag(:uname) %>
+	<%= submit_tag("View GitHub Repos") %>
+<% end %>
+
+<div id="uname_wrapper">Displaying <span id="username"><%= @uname %></span>'s GitHub Repos</div>
+<div id="repos"></div>

@@ -1,0 +1,11 @@
+
+<% repos.each do |repo| %>
+	<div><%= repo.name %></div>
+<% end %>
+<div>===========================</div>
+
+<% repos.each do |repo| %>
+	<%= repo.each do |key, value| %>
+	<%= key %> || <%= value %><br /><br />
+	<% end %>
+<% end %>
