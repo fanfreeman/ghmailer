@@ -1,7 +1,7 @@
 GithubMailer::Application.routes.draw do
-  get "repos/lookup"
-  get "repos/authorize"
-  get "repos/callback"
+  root to: 'repos#lookup'
+  match '/lookup',  to: 'repos#lookup', via: 'get'
+  match '/mail',    to: 'repos#mail',   via: 'post'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
+gem 'github_api'
+gem 'certified'
+gem 'bootstrap-sass', '2.3.0.1'
 
 group :development, :test do
   gem 'sqlite3', '1.3.7'
@@ -25,6 +28,3 @@ gem 'jbuilder', '1.0.1'
 group :production do
   gem 'pg', '0.14.1'
 end
-
-gem 'github_api'
-gem 'certified'

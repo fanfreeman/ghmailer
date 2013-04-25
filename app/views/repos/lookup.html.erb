@@ -1,10 +1,26 @@
-<h1>Repos#lookup</h1>
-<p>Find me in app/views/repos/lookup.html.erb</p>
+<div class="center hero-unit">
+	<h1>Lookup GitHub Repos</h1>
 
-<%= form_tag("/repos/lookup", :method => "get", :remote => true) do %>
-	<%= text_field_tag(:uname) %>
-	<%= submit_tag("View GitHub Repos") %>
-<% end %>
+	<h2 id="notice">
+    Just type in a GitHub user name below:
+  </h2>
 
-<div id="uname_wrapper">Displaying <span id="username"><%= @uname %></span>'s GitHub Repos</div>
-<div id="repos"></div>
+	<%= form_tag( "/lookup", :id => 'lookup_form', :method => "get", :remote => true ) do %>
+		<%= text_field_tag(:uname, nil, :placeholder => "GitHub User Name") %>
+		<%= submit_tag("View GitHub Repos", class: "btn btn-primary") %>
+	<% end %>
+
+	<div id="uname_wrapper">Displaying <span id="username"><%= @uname %></span>'s GitHub Repos</div>
+	<div id="send_mail">
+		<%= form_tag("/mail", :method => "post", :remote => true,
+																:html => {:'data-type' => 'json', :multipart => true}) do %>
+			<%= text_field_tag :email_address, nil, :placeholder => "Email Address" %>
+			<%= hidden_field_tag :hidden_uname %>
+			<%= hidden_field_tag :hidden_repos %>
+			<%= submit_tag("Email Repo List", class: "btn btn-primary") %>
+		<% end %>
+	</div>
+	<div id="repos"></div>
+</div>
+
+<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>

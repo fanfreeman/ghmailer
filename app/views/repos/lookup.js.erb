@@ -1,2 +1,11 @@
-$('#username').text("<%=j @uname %>");
-$('#repos').html("<%=j render(partial: "repos", locals: {repos: @repos}) %>");
+<% if @repos_list.size > 0 %>
+	$('#notice').html('GitHub user found');
+	$('#uname_wrapper').show();
+	$('#username').text("<%=j @uname %>");
+	$('#hidden_uname').val("<%=j= @uname %>");
+	$('#hidden_repos').val("<%=j @repos_list.to_json.html_safe %>");
+	$('#send_mail').show();
+	$('#repos').html("<%=j render(partial: "repos", locals: {repos: @repos_list}) %>").show();
+<% else %>
+	$('#notice').html('GitHub user not found').addClass('highlight');
+<% end %>
